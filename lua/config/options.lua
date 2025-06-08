@@ -13,15 +13,37 @@ vim.opt.title = true
 vim.opt.relativenumber = false -- Do not use relative line numbers
 vim.opt.foldmethod = "syntax" -- fold by syntax
 vim.opt.foldenable = false --Disable folding at startup.
-vim.g.clipboard = {
-    name = "win32yank-wsl",
-    copy = {
-      ["+"] = "win32yank.exe -i --crlf",
-      ["*"] = "win32yank.exe -i --crlf",
-    },
-    paste = {
-      ["+"] = "win32yank.exe -o --lf",
-      ["*"] = "win32yank.exe -o --lf",
-    },
-    cache_enabled = 0,
-}
+
+-- 检测是否在 WSL 环境中
+local function is_wsl()
+    -- 检查 /proc/version 文件是否存在（仅在 Linux 系统上存在）
+    local proc_version_path = "/proc/version"
+    if vim.fn.filereadable(proc_version_path) == 0 then
+        return false
+    end
+    
+    -- 安全地读取文件内容
+    local ok, output = pcall(vim.fn.readfile, proc_version_path)
+    if not ok or not output or not output[1] then
+        return false
+    end
+    
+    -- 检查是否包含 Microsoft 字符串（WSL 的标识）
+    return output[1]:lower():match("microsoft") ~= nil
+end
+
+-- 仅在 WSL 环境下配置 win32yank
+if is_wsl() then
+    vim.g.clipboard = {
+        name = "win32yank-wsl",
+        copy = {
+            ["+"] = "win32yank.exe -i --crlf",
+            ["*"] = "win32yank.exe -i --crlf",
+        },
+        paste = {
+            ["+"] = "win32yank.exe -o --lf",
+            ["*"] = "win32yank.exe -o --lf",
+        },
+        cache_enabled = 0,
+    }
+end
