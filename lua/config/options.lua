@@ -13,6 +13,8 @@ vim.opt.title = true
 vim.opt.relativenumber = false -- Do not use relative line numbers
 vim.opt.foldmethod = "manual" -- use manual folding
 vim.opt.foldenable = false --Disable folding at startup.
+vim.opt.spell = false -- 禁用拼写检查
+vim.opt.spelllang = {} -- 清空拼写检查语言
 
 -- 检测是否在 WSL 环境中
 local function is_wsl()
