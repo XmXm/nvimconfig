@@ -17,6 +17,11 @@ return {
 					or os.getenv("SSH_CONNECTION") ~= nil
 			end
 
+			-- 检测是否在tmux环境中
+			local function is_tmux()
+				return os.getenv("TMUX") ~= nil
+			end
+
 			-- 检测是否在WSL环境中（复用原有逻辑）
 			local function is_wsl()
 				local proc_version_path = "/proc/version"
@@ -30,9 +35,9 @@ return {
 				return output[1]:lower():match("microsoft") ~= nil
 			end
 
-			-- 仅在SSH环境下配置OSC 52剪切板
-			-- WSL环境继续使用win32yank
-			if is_ssh() and not is_wsl() then
+			-- 在SSH或tmux环境下配置OSC 52剪切板
+			-- 优先级：tmux > SSH > WSL
+			if is_tmux() or (is_ssh() and not is_wsl()) then
 				local function copy(lines, _)
 					require("osc52").copy(table.concat(lines, "\n"))
 				end
