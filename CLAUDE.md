@@ -36,9 +36,16 @@ The configuration is organized following LazyVim conventions:
 
 ### Key Customizations
 1. **WSL Support**: Automatically configures `win32yank` for clipboard integration when running in WSL
-2. **Tab Settings**: Uses hard tabs (width 4) instead of spaces
-3. **No Backup Files**: Disables backup, writebackup, and swapfile for cleaner operation
-4. **Windows-style Shortcuts**: Ctrl+Z for undo, Ctrl+Y for redo, Ctrl+C for copy
+2. **SSH/Remote Clipboard**: Uses OSC 52 protocol for clipboard synchronization in SSH environments
+3. **Tab Settings**: Uses hard tabs (width 4) instead of spaces
+4. **No Backup Files**: Disables backup, writebackup, and swapfile for cleaner operation
+5. **Windows-style Shortcuts**: Ctrl+Z for undo, Ctrl+Y for redo, Ctrl+C for copy
+
+### Remote Clipboard Support
+- **Supported**: Windows Terminal, iTerm2, tmux environments with OSC 52 support
+- **NOT Supported**: Termius (does not support OSC 52 protocol)
+- **Configuration**: Located in `lua/plugins/clipboard.lua`
+- **Automatic Detection**: Configures clipboard based on environment variables (SSH, tmux, WSL)
 
 ### Plugin Management
 Uses lazy.nvim with LazyVim's plugin ecosystem. Custom plugins should be added to `lua/plugins/` following the lazy.nvim specification format shown in `example.lua`.
