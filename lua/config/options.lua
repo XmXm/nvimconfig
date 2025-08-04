@@ -16,6 +16,9 @@ vim.opt.foldenable = false --Disable folding at startup.
 vim.opt.spell = false -- 禁用拼写检查
 vim.opt.spelllang = {} -- 清空拼写检查语言
 
+-- 设置 telescope 为默认的模糊查找器
+vim.g.lazyvim_picker = "telescope"
+
 -- 检测是否在 WSL 环境中
 local function is_wsl()
 	-- 检查 /proc/version 文件是否存在（仅在 Linux 系统上存在）
