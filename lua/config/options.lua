@@ -1,6 +1,9 @@
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
+
+--vim.g.lazyvim_picker = "fzf"
+
 vim.opt.autochdir = true
 vim.opt.expandtab = false -- Do not use spaces instead of tabs
 vim.opt.tabstop = 4
@@ -15,9 +18,6 @@ vim.opt.foldmethod = "manual" -- use manual folding
 vim.opt.foldenable = false --Disable folding at startup.
 vim.opt.spell = false -- 禁用拼写检查
 vim.opt.spelllang = {} -- 清空拼写检查语言
-
--- 设置 telescope 为默认的模糊查找器
-vim.g.lazyvim_picker = "telescope"
 
 -- 检测是否在 WSL 环境中
 local function is_wsl()
