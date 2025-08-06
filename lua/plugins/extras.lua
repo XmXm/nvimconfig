@@ -54,4 +54,8 @@ return {
 			vim.opt.spelllang = {}
 		end,
 	},
+	{
+		"folke/snacks.nvim",
+		keys = {},
+	},
 }
