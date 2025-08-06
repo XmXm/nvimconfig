@@ -1,15 +1,5 @@
 -- 统一管理禁用的插件
 return {
-	-- 禁用 snacks 的 picker 功能，使用 fzf-lua 替代
-	--[[{
-		"folke/snacks.nvim",
-		opts = {
-			picker = { enabled = false },
-		},
-	},]]
-	--
-
-	-- 从 extras.lua 中合并过来的禁用插件
 	-- 禁用可能导致渲染问题的 UI 插件
 	{ "echasnovski/mini.indentscope", enabled = false }, -- 缩进线动画
 	{ "lukas-reineke/indent-blankline.nvim", enabled = false }, -- 缩进指示线
@@ -29,4 +19,3 @@ return {
 	-- 禁用 mini.pairs（自动括号补全）
 	{ "echasnovski/mini.pairs", enabled = false },
 }
-

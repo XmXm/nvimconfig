@@ -1,6 +1,7 @@
 return {
 	{
 		"ibhagwan/fzf-lua",
+		lazy = false,
 		opts = function(_, opts)
 			local fzf_opts = vim.tbl_deep_extend("force", opts or {}, {
 				-- 覆盖默认窗口配置
@@ -20,4 +21,3 @@ return {
 		end,
 	},
 }
-
