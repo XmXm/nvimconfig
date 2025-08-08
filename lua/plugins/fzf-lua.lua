@@ -16,6 +16,12 @@ return {
 						scrollchars = { "┃", "" },
 					},
 				},
+				grep = {
+					rg_opts = '-g "!.patch" -g "!*.dll" ',
+				},
+				files = {
+					fd_opts = "--exclude /Library/ --exclude /Temp/ --exclude /dragon2017/ --exclude .svn --exclude .idea",
+				},
 			})
 			return fzf_opts
 		end,

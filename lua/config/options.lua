@@ -1,8 +1,9 @@
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
+local cutils = require("cutils")
 
---vim.g.lazyvim_picker = "fzf"
+vim.g.lazyvim_picker = "fzf"
 
 vim.opt.autochdir = true
 vim.opt.expandtab = false -- Do not use spaces instead of tabs
@@ -20,26 +21,8 @@ vim.opt.spell = false -- 禁用拼写检查
 vim.opt.spelllang = {} -- 清空拼写检查语言
 vim.log.levels.INFO = 3
 
--- 检测是否在 WSL 环境中
-local function is_wsl()
-	-- 检查 /proc/version 文件是否存在（仅在 Linux 系统上存在）
-	local proc_version_path = "/proc/version"
-	if vim.fn.filereadable(proc_version_path) == 0 then
-		return false
-	end
-
-	-- 安全地读取文件内容
-	local ok, output = pcall(vim.fn.readfile, proc_version_path)
-	if not ok or not output or not output[1] then
-		return false
-	end
-
-	-- 检查是否包含 Microsoft 字符串（WSL 的标识）
-	return output[1]:lower():match("microsoft") ~= nil
-end
-
 -- 仅在 WSL 环境下配置 win32yank
-if is_wsl() then
+if cutils.is_wsl() then
 	vim.g.clipboard = {
 		name = "win32yank-wsl",
 		copy = {
@@ -52,4 +35,11 @@ if is_wsl() then
 		},
 		cache_enabled = 0,
 	}
+end
+
+if vim.g.neovide then
+	vim.opt.guifont = "JetBrainsMonoNL Nerd Font Mono:h14"
+	vim.g.neovide_input_ime = false
+	vim.g.neovide_hide_mouse_when_typing = true
+	vim.g.neovide_remember_window_size = true
 end
