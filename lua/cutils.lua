@@ -22,12 +22,80 @@ function _M.is_windows()
 end
 
 function _M.increment_font_size(v)
-	if vim.g.neovide then
-		local reg = ":h(%d+)"
-		local size_str = vim.o.guifont:match(reg)
+	if not vim.g.neovide then
+		return
+	end
+	local font = vim.o.guifont
+	local pattern = ":h(%d+)"
+	local size_str = font:match(pattern)
+
+	-- 检查是否匹配到字体大小
+	if size_str then
 		local size = tonumber(size_str) + v
-		vim.o.guifont = vim.o.guifont:gsub(reg, ":" .. tostring(size))
+		-- 确保字体大小在合理范围内
+		size = math.max(6, math.min(size, 72))
+		-- 修正：替换时保留 :h 前缀
+		vim.o.guifont = font:gsub(pattern, ":h" .. tostring(size))
+	else
+		-- 如果没有匹配到，可能需要处理其他格式
+		vim.notify("无法识别字体大小格式", vim.log.levels.WARN)
 	end
 end
+
+local ignore_fileexts = {
+	".meta",
+	".manifest",
+	".browser",
+	".aspx",
+	".dat",
+	".prefab",
+	".unity",
+	".asset",
+	".bytes",
+	".jpg",
+	".JPG",
+	".png",
+	".PNG",
+	".dll",
+	".pdb",
+	".mdb",
+	".jar",
+	".a",
+	".o",
+	".so",
+	".obj",
+	".exe",
+	".mat",
+	".bnk",
+	".cache",
+	".xls",
+	".xlsx",
+	".doc",
+	".docx",
+	".ttf",
+	".TTF",
+	".otf",
+	".tga",
+	".fbx",
+	".FBX",
+	".anim",
+	".controller",
+	".bin",
+	".resx",
+	".resources",
+	".psd",
+	".temp",
+	".gradle",
+	".data",
+	".db",
+	".mp4",
+	".unity3d",
+	".zip",
+	".gz",
+	".mmdb",
+	".tgz",
+	".rar",
+	".7z",
+}
 
 return _M
