@@ -23,6 +23,10 @@ return {
 					fd_opts = "--exclude /Library/ --exclude /Temp/ --exclude /dragon2017",
 					hidden = false,
 				},
+				fzf_opts = {
+					["--case-sensitive"] = false, -- 禁用大小写敏感
+					["--ignore-case"] = true, -- 启用忽略大小写
+				},
 			})
 			return fzf_opts
 		end,

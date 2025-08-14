@@ -19,7 +19,8 @@ vim.opt.foldmethod = "manual" -- use manual folding
 vim.opt.foldenable = false --Disable folding at startup.
 vim.opt.spell = false -- 禁用拼写检查
 vim.opt.spelllang = {} -- 清空拼写检查语言
-vim.log.levels.INFO = 3
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- 仅在 WSL 环境下配置 win32yank
 if cutils.is_wsl() then
@@ -43,3 +44,5 @@ if vim.g.neovide then
 	vim.g.neovide_hide_mouse_when_typing = true
 	vim.g.neovide_remember_window_size = true
 end
+
+vim.log.levels.INFO = 3
