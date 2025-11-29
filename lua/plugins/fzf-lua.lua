@@ -3,6 +3,9 @@ return {
 		"ibhagwan/fzf-lua",
 		lazy = false,
 		opts = function(_, opts)
+			local fzf = require("fzf-lua")
+			local config = fzf.config
+			local actions = fzf.actions
 			local fzf_opts = vim.tbl_deep_extend("force", opts or {}, {
 				-- 覆盖默认窗口配置
 				winopts = {
@@ -20,7 +23,7 @@ return {
 					rg_opts = '-g "!.patch" -g "!*.dll" ',
 				},
 				files = {
-					fd_opts = "--exclude /Library/ --exclude /Temp/ --exclude /dragon2017",
+					fd_opts = "--exclude /Library/ --exclude /Temp/ --exclude /dragon2017/ --exclude .svn --exclude .idea --exclude .git",
 					hidden = false,
 				},
 				fzf_opts = {

@@ -25,3 +25,8 @@ if vim.g.neovide == true then
 	map({'n','i'}, '<C-->', function() cutils.increment_font_size(-1) end, { desc = 'FontSize--' })
 	map({'n','i'}, '<C-F11>', ':let g:neovide_fullscreen = !g:neovide_fullscreen<CR>', {desc = 'ToggleFullScreen'})
 end
+--map({ "n", "v" }, "d", '"_d', { desc = "Delete without yank" })
+--map({ "n", "v" }, "D", '"_D', { desc = "Delete line without yank" })
+map({ "n", "v" }, "c", '"_c', { desc = "Change without yank" })
+map({ "n", "v" }, "C", '"_C', { desc = "Change line without yank" })
+--map("n", "x", '"_x', { desc = "Delete char without yank" })
