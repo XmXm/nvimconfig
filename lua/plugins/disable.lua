@@ -1,11 +1,11 @@
 -- 统一管理禁用的插件
 return {
 	-- 禁用可能导致渲染问题的 UI 插件
-	{ "echasnovski/mini.indentscope", enabled = false }, -- 缩进线动画
+	{ "nvim-mini/mini.indentscope", enabled = false }, -- 缩进线动画
 	{ "lukas-reineke/indent-blankline.nvim", enabled = false }, -- 缩进指示线
 	{ "folke/noice.nvim", enabled = false }, -- UI 增强插件
 	{ "rcarriga/nvim-notify", enabled = false }, -- 通知插件
-	{ "echasnovski/mini.animate", enabled = false }, -- 动画效果
+	{ "nvim-mini/mini.animate", enabled = false }, -- 动画效果
 
 	-- 禁用自动补全
 	{ "hrsh7th/nvim-cmp", enabled = false },
@@ -17,5 +17,5 @@ return {
 	{ "rafamadriz/friendly-snippets", enabled = false },
 
 	-- 禁用 mini.pairs（自动括号补全）
-	{ "echasnovski/mini.pairs", enabled = false },
+	{ "nvim-mini/mini.pairs", enabled = false },
 }
