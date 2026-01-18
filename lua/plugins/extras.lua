@@ -2,7 +2,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
-			ensure_installed = { "c_sharp" },
+			ensure_installed = { "c_sharp", "json5", "jsonc" },
 			-- 禁用可能导致渲染问题的功能
 			incremental_selection = {
 				enable = false,
@@ -35,6 +35,7 @@ return {
 				omnisharp = { autostart = false },
 				ltex = { enabled = false },
 				marksman = { enabled = false },
+				jsonls = { settings = { json = { validate = { enable = false } } } },
 			},
 		},
 	},

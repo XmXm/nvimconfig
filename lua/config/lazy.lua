@@ -20,6 +20,7 @@ require("lazy").setup({
 		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
 		-- import LazyVim extras with fzf-lua
 		{ import = "lazyvim.plugins.extras.editor.fzf" },
+		{ import = "lazyvim.plugins.extras.lang.json" },
 		-- import/override with your plugins
 		{ import = "plugins" },
 	},
