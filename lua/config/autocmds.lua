@@ -14,7 +14,7 @@ local set_indent = function(size)
 end
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "json", "yaml", "typescript", "javascript" },
+	pattern = { "json", "jsonc", "yaml", "typescript", "javascript" },
 	callback = function()
 		set_indent(2) -- 这些文件类型使用 2 空格
 	end,
